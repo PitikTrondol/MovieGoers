@@ -37,7 +37,7 @@ dependencies {
     implementation "com.github.kittinunf.fuel:fuel-android:2.2.1"
     implementation "com.github.kittinunf.fuel:fuel-gson:2.2.1"
 
-    implementation 'org.koin:koin-android-viewmodel:2.0.1'
+    implementation 'org.koin:koin-android-viewmodel:2.0.0'
 
 
     testImplementation 'junit:junit:4.12'
