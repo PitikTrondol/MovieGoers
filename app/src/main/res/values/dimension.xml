@@ -3,4 +3,6 @@
     <dimen name="list_margin">5dp</dimen>
     <dimen name="news_title">18sp</dimen>
     <dimen name="news_desc">16sp</dimen>
+    <dimen name="detail_title">20sp</dimen>
+    <dimen name="detail_genre">12sp</dimen>
 </resources>

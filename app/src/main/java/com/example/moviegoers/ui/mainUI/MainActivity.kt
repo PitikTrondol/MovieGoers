@@ -2,21 +2,18 @@ package com.example.moviegoers.ui.mainUI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviegoers.R
-import com.example.moviegoers.model.ResultsItem
-import com.example.moviegoers.ui.detailUI.DetailMovie
+import com.example.moviegoers.ui.detailUI.DetailMovieActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity() {
 
-    val mainVM : MainViewModel by viewModel()
+    private val mainVM : MainViewModel by viewModel()
     private lateinit var itemAdapter : RvAdapterMovieList
-    private var items : ArrayList<ResultsItem> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         itemAdapter = RvAdapterMovieList(this, object:RvAdapterMovieList.OnItemClickListener{
             override fun onItemClick(item: Int) {
-                val intent = DetailMovie.newIntent(this@MainActivity, itemAdapter.data, item)
-//                val intent = Intent(this@MainActivity, DetailMovie::class.java)
+                val intent = DetailMovieActivity.newIntent(this@MainActivity, itemAdapter.data, item)
                 startActivity(intent)
             }
         })
@@ -48,7 +44,6 @@ class MainActivity : AppCompatActivity() {
                 itemAdapter.data.add(movie!!)
             }
         }
-
 
         recyclerView.adapter = itemAdapter
     }

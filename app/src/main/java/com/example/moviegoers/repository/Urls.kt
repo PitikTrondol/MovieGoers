@@ -13,4 +13,8 @@ object Urls {
     fun getConfiguration() : String {
         return "$BASE_URL/configuration?api_key=$API_KEY"
     }
+
+    fun getMovieGenres() : String {
+        return "$BASE_URL/genre/movie/list?api_key=$API_KEY"
+    }
 }
