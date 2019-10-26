@@ -88,7 +88,9 @@ class DetailMovieActivity : AppCompatActivity() {
             .into(detail_image)
 
         detail_description.text = movie?.overview
-
+        movie_release.text = "Release Date : \n" + movie?.releaseDate
+        movie_popularity.text = "Popularity : \n"+movie?.popularity
+        movie_vote.text = "Total Votes : \n"+movie?.voteCount
     }
 
 }

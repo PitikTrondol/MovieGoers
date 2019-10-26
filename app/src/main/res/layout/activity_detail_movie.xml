@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    android:weightSum="15"
+    android:weightSum="20"
     android:outlineAmbientShadowColor="@color/colorPrimaryDark"
     android:orientation="vertical">
 
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="7">
+        android:layout_weight="9">
 
         <TextView
             android:id="@+id/movie_title"
@@ -23,8 +23,7 @@
             android:textAlignment="center"
             android:text="Title"
             android:textStyle="bold"
-            android:layout_weight="1"
-            android:paddingBottom="0dp"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/movie_genre"
@@ -34,8 +33,7 @@
             android:gravity="top"
             android:textAlignment="center"
             android:text="Genre"
-            android:layout_weight="1"
-            android:paddingTop="0dp"/>
+            android:layout_weight="1" />
 
         <View
             android:layout_width="match_parent"
@@ -47,7 +45,7 @@
         android:id="@+id/image_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="5"
+        android:layout_weight="6"
         android:paddingTop="5dp"
         android:orientation="vertical">
 
@@ -67,7 +65,39 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/movie_release"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/news_desc"
+                    android:textAlignment="textStart"
+                    android:textStyle="bold"
+                    android:text="Release Date :"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/movie_popularity"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/news_desc"
+                    android:textAlignment="textStart"
+                    android:text="Popularity :"
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/movie_vote"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/news_desc"
+                    android:textAlignment="textStart"
+                    android:text="Vote Average :"
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
+
             </LinearLayout>
         </LinearLayout>
 
@@ -81,7 +111,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3"
+        android:layout_weight="5"
         android:paddingTop="5dp"
         android:orientation="vertical">
         <TextView
