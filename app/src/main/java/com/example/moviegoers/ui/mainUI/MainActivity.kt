@@ -1,6 +1,5 @@
 package com.example.moviegoers.ui.mainUI
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,22 +23,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         title = "Movie Goers"
-
-        setupRecyclerView(mainVM.test())
-
-        Log.i("AINO", "MUMEEEET")
+        setupRecyclerView()
     }
 
-    private fun setupRecyclerView(items : ArrayList<ResultsItem>) {
+    private fun setupRecyclerView() {
         val recyclerView = findViewById<View>(R.id.list) as RecyclerView
         recyclerView.setHasFixedSize(true)
 
-        val layoutManager = GridLayoutManager(this, 4)
+        val layoutManager = GridLayoutManager(this, 2)
         recyclerView.layoutManager = layoutManager
 
         itemAdapter = RvAdapterMovieList(this, object:RvAdapterMovieList.OnItemClickListener{
             override fun onItemClick(item: Int) {
-                val intent = Intent(this@MainActivity, DetailMovie::class.java)
+                val intent = DetailMovie.newIntent(this@MainActivity, itemAdapter.data, item)
+//                val intent = Intent(this@MainActivity, DetailMovie::class.java)
                 startActivity(intent)
             }
         })

@@ -26,7 +26,7 @@ class FavoriteRepository {
     fun fetchMovies(responseHandler: (Popular) -> Unit) {
         val httpAsync = Urls.getPopularMovies()
             .httpGet()
-            .responseObject(Deserializer()) { _, _, result ->
+            .responseObject(DesPopular()) { _, _, result ->
                 when (result) {
                     is Result.Failure -> {
                         val ex = result.getException()
@@ -44,7 +44,7 @@ class FavoriteRepository {
     }
 
 
-    class Deserializer : ResponseDeserializable<Popular> {
+    class DesPopular : ResponseDeserializable<Popular> {
         override fun deserialize(reader: Reader): Popular? = Gson().fromJson(reader, Popular::class.java)
     }
 }

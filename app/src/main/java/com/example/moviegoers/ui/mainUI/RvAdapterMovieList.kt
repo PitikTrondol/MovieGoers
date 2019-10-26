@@ -11,6 +11,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviegoers.R
 import com.example.moviegoers.model.ResultsItem
+import com.example.moviegoers.repository.Urls
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.movie_item.view.*
 
 class RvAdapterMovieList(private val context : Context, private val listener: OnItemClickListener)
     : RecyclerView.Adapter<RvAdapterMovieList.ViewHolder>() {
@@ -30,8 +33,15 @@ class RvAdapterMovieList(private val context : Context, private val listener: On
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val movie = data[position]
+        Picasso
+            .get()
+            .load(Urls.IMAGE_BASE_URL+movie.posterPath)
+            .error(R.drawable.ic_broken_image)
+            .placeholder(R.drawable.pb_default_loading_animated)
+            .into(holder.image)
+
         holder.title.text = data[position].title
-        holder.desc.text = data[position].overview
         holder.itemView.setOnClickListener{
             listener.onItemClick(position)
             selectedItem = data[position]
@@ -53,7 +63,7 @@ class RvAdapterMovieList(private val context : Context, private val listener: On
     }
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        var title: TextView = v.findViewById<View>(R.id.tv_title) as TextView
-        var desc: TextView = v.findViewById<View>(R.id.tv_desc) as TextView
+        val image : ImageView = v.image
+        val title: TextView = v.tv_title
     }
 }
