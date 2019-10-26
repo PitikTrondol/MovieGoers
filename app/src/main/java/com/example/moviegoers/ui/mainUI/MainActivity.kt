@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         title = "Movie Goers"
 
         setupRecyclerView(mainVM.test())
-        mainVM.getMovies()
+
         Log.i("AINO", "MUMEEEET")
     }
 
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<View>(R.id.list) as RecyclerView
         recyclerView.setHasFixedSize(true)
 
-        val layoutManager = GridLayoutManager(this, 1)
+        val layoutManager = GridLayoutManager(this, 4)
         recyclerView.layoutManager = layoutManager
 
         itemAdapter = RvAdapterMovieList(this, object:RvAdapterMovieList.OnItemClickListener{
@@ -44,8 +44,14 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        itemAdapter.data.clear()
-        itemAdapter.data.addAll(items)
+        mainVM.getMovies { pop ->
+            itemAdapter.data.clear()
+            for(movie in pop.results!!)
+            {
+                itemAdapter.data.add(movie!!)
+            }
+        }
+
 
         recyclerView.adapter = itemAdapter
     }

@@ -23,7 +23,7 @@ class FavoriteRepository {
         return dummy
     }
 
-    fun getMovies(responseHandler: (Popular) -> Unit) {
+    fun fetchMovies(responseHandler: (Popular) -> Unit) {
         val httpAsync = Urls.getPopularMovies()
             .httpGet()
             .responseObject(Deserializer()) { _, _, result ->
@@ -34,11 +34,12 @@ class FavoriteRepository {
                     }
                     is Result.Success -> {
                         val data = result.get()
-                        responseHandler.invoke(result.get())
-                        Log.i("AINO", "Exception --- ${data.results?.size}")
+                        responseHandler(data)
+                        Log.i("AINO", "Success --- ${data.results?.size}")
                     }
                 }
             }
+
         httpAsync.join()
     }
 
